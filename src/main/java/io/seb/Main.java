@@ -32,7 +32,7 @@ public class Main {
         List<Player> players = new ArrayList<>();
         players.add(new Player("Mohit", new Symbol('X'), PlayerType.HUMAN));
         players.add(new Player("Akash", new Symbol('O'), PlayerType.HUMAN));
-//        players.add(new Player("John", new Symbol('#'), PlayerType.BOT));
+//        players.add(new Bot("Scaler Bot", new Symbol('#'), BotDifficultyLevel.EASY));
 
         List<WinningStrategy> winningStrategies = List.of(
                 new RowWinningStrategy(),

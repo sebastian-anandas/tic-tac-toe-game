@@ -20,6 +20,8 @@ public class DiagonalWinningStrategy implements WinningStrategy {
         int col = move.getCell().getCol();
         Symbol symbol = move.getPlayer().getSymbol();
 
+        boolean isWinner = false;
+
         // left diagonal => row = col
         if(row == col) {
             if(!leftDiagonal.containsKey(symbol)) {
@@ -27,7 +29,9 @@ public class DiagonalWinningStrategy implements WinningStrategy {
             }
             leftDiagonal.put(symbol, leftDiagonal.get(symbol) + 1);
 
-            return leftDiagonal.get(symbol).equals(board.getDimension());
+            if(leftDiagonal.get(symbol).equals(board.getDimension())) {
+                isWinner  = true;
+            }
         }
 
         // right diagonal => row + col = dimension - 1
@@ -37,9 +41,11 @@ public class DiagonalWinningStrategy implements WinningStrategy {
             }
             rightDiagonal.put(symbol, rightDiagonal.get(symbol) + 1);
 
-            return rightDiagonal.get(symbol).equals(board.getDimension());
-        }
+            if(rightDiagonal.get(symbol).equals(board.getDimension())) {
+                isWinner = true;
+            }
+         }
 
-        return false;
+        return isWinner;
     }
 }
